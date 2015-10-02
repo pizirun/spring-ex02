@@ -25,6 +25,7 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 	}
 
 	// Maps resources path to webapp/resources
+        @Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/resources/**").addResourceLocations(
 				"/resources/");

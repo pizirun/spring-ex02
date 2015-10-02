@@ -18,10 +18,12 @@ public class StrategyDAOImpl implements StrategyDAO {
 		return sessionFactory.getCurrentSession();
 	}
 
+        @Override
 	public void addStrategy(Strategy strategy) {
 		getCurrentSession().save(strategy);
 	}
 
+        @Override
 	public void updateStrategy(Strategy strategy) {
 		Strategy strategyToUpdate = getStrategy(strategy.getId());
 		strategyToUpdate.setName(strategy.getName());
@@ -29,11 +31,13 @@ public class StrategyDAOImpl implements StrategyDAO {
 		getCurrentSession().update(strategyToUpdate);
 	}
 
+        @Override
 	public Strategy getStrategy(int id) {
 		Strategy strategy = (Strategy) getCurrentSession().get(Strategy.class, id);
 		return strategy;
 	}
 
+        @Override
 	public void deleteStrategy(int id) {
 		Strategy strategy = getStrategy(id);
 		if (strategy != null)
@@ -41,6 +45,7 @@ public class StrategyDAOImpl implements StrategyDAO {
 	}
 
 	@SuppressWarnings("unchecked")
+        @Override
 	public List<Strategy> getStrategies() {
 		return getCurrentSession().createQuery("from Strategy").list();
 	}

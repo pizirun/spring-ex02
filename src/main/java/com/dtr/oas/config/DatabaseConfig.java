@@ -41,7 +41,12 @@ public class DatabaseConfig {
 		dataSource.setUrl(env.getRequiredProperty(PROPERTY_NAME_DATABASE_URL));
 		dataSource.setUsername(env.getRequiredProperty(PROPERTY_NAME_DATABASE_USERNAME));
 		dataSource.setPassword(env.getRequiredProperty(PROPERTY_NAME_DATABASE_PASSWORD));
-		
+		// requires utf 8 to support Chinese query
+                Properties p = new Properties();
+                p.put("useUnicode", "yes");
+                p.put("characterEncoding", "UTF-8");
+                dataSource.setConnectionProperties(p);
+                
 		return dataSource;
 	}
 	
